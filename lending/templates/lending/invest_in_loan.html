@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Invest in Loan</title>
+</head>
+<body>
+    <h1>Invest in Loan</h1>
+    <p>Loan Amount: {{ loan.amount }}</p>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Invest</button>
+    </form>
+</body>
+</html>

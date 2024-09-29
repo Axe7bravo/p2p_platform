@@ -1,0 +1,15 @@
+{% extends "lending/base.html" %}
+{% block title %}Payment{% endblock %}
+
+{% block content %}
+    <div class="col-md-6 offset-md-3">
+        <h1>Payment</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="payment_amount">Payment Amount:</label>
+            <input type="number" name="payment_amount" required>
+            <button type="submit">Make Payment</button>
+        </form>
+    </div>
+
+{% endblock %}

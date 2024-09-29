@@ -1,0 +1,16 @@
+{% extends "lending/base.html" %}
+{% block title %}Register{% endblock %}
+
+{% block content %}
+    <div class="shadow p-3 mb-5 bg-body-tertiary rounded col-md-6 offset-md-3">
+        <h1>Register</h1>
+        <form method="POST">
+            {% csrf_token %}
+
+            {{form.as_p}}
+                        
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>
+
+{% endblock %}
