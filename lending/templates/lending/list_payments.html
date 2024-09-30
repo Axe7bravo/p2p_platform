@@ -1,1 +1,11 @@
-{% extends 'lending/dashboard.html' %}
+{% extends 'lending/base.html' %}
+
+{% block content %}
+
+{%include 'lending/profile.html'%}
+<h1>List Payments</h1>
+{% for payment in payments %}
+    <p>{{ payment.amount }} - {{ payment.loan.interest_rate }}% - {{ payment.loan.term_months }} months</p>
+{% endfor %}
+
+{% endblock %}

@@ -162,3 +162,5 @@ def borrower_dashboard(request):
 def index(request):
     return render(request, './index.html')
 
+def about_view(request):
+    return render(request, 'lending/about.html')
