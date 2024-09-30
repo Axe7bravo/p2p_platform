@@ -26,6 +26,7 @@ class Loan(models.Model):
     outstanding_balance = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     status = models.CharField(max_length=20, choices=[('pending', 'Pending'), ('funded', 'Funded'), ('repaid', 'Repaid'), ('delinquent', 'Delinquent')])
     payment_frequency = models.CharField(max_length=20, choices=[('monthly','Monthly'),('weekly','Weekly'),('biweekly','Biweekly')])
+    borrower = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
 
 
 class Investment(models.Model):

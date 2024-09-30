@@ -21,7 +21,7 @@ class RegistrationForm(UserCreationForm):
     email = forms.EmailField(max_length=30, widget=forms.EmailInput(attrs={'class':'form-control'}))
     first_name = forms.CharField(max_length=30, widget=forms.TextInput(attrs={'class':'form-control'}))
     last_name = forms.CharField(max_length=30, widget=forms.TextInput(attrs={'class':'form-control'}))
-    
+    user_type =forms.ChoiceField(choices=[('borrower', 'Borrower'), ('lender', 'Lender')], widget=forms.Select(attrs={'class':'btn btn-primary dropdown-toggle'}))
     
     class Meta:
         model = User
@@ -33,6 +33,7 @@ class RegistrationForm(UserCreationForm):
         self.fields['username'].widget.attrs['class'] = 'form-control'
         self.fields['password1'].widget.attrs['class'] = 'form-control'
         self.fields['password2'].widget.attrs['class'] = 'form-control'
+        
         
 class UserProfileForm(forms.ModelForm):
     first_name = forms.CharField(max_length=30, widget=forms.TextInput(attrs={'class':'form-control'}))

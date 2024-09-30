@@ -3,18 +3,25 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-<div class=" shadow p-3 mb-5 bg-body-tertiary rounded col-md-6 offset-md-3">
-    <br/>
-    <h1>Login</h1>
-    <br/>
+<main class="form-signin w-100 m-auto">
+    <div class="b-example-divider"></div>
+    <div class="b-example-divider"></div>
+    <div class="b-example-divider"></div>
+    <div class="b-example-divider"></div>
+    <div class=" shadow p-3 mb-5 bg-body-tertiary rounded col-md-4 offset-md-3">
+        
+        <br/>
+        <h1 class="h3 mb-3 fw-normal">Please login</h1>
+        <br/>
 
-    <form method="POST" >
-        {% csrf_token %}
-    
-        {{form.as_p}}
-        <button type="submit" class="btn btn-primary">Login</button>
-    </form>
-</div>
+        <form method="POST" >
+            {% csrf_token %}
+        
+            {{form.as_p}}
+            <button type="submit" class="btn btn-primary w-100 py-2">Login</button>
+        </form>
+    </div>
+</main>
 
 
 {% endblock %}

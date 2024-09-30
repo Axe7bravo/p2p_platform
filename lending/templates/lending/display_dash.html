@@ -1,0 +1,55 @@
+<h1> Dashboard</h1>
+
+<h2>Active Loans</h2>
+{% if loans %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Loan ID</th>
+            <th>Amount</th>
+            <th>Interest Rate</th>
+            <th>Term (Months)</th>
+            <th>Outstanding Balance</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for loan in loans %}
+        <tr>
+            <td>{{ loan.id }}</td>
+            <td>{{ loan.amount }}</td>
+            <td>{{ loan.interest_rate }}%</td>
+            <td>{{ loan.term_months }}</td>
+            <td>{{ loan.outstanding_balance }}</td>
+            <td>{{ loan.get_status_display }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>You have no active loans.</p>
+{% endif %}
+
+<h2>Payment History</h2>
+{% if payments %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Loan ID</th>
+            <th>Amount</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for payment in payments %}
+        <tr>
+            <td>{{ payment.loan.id }}</td>
+            <td>{{ payment.amount }}</td>
+            <td>{{ payment.date }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>You have no payment history.</p>
+{% endif %}

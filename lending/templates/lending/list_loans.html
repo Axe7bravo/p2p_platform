@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>List Loans</title>
-</head>
-<body>
+{% extends 'lending/base.html' %}
+
+{% include 'lending/profile.html' %}
     <h1>List Loans</h1>
     {% for loan in loans %}
         <p>{{ loan.amount }} - {{ loan.interest_rate }}% - {{ loan.term_months }} months</p>
         <a href="{% url 'invest_in_loan' loan.id %}">Invest</a>
     {% endfor %}
-</body>
-</html>

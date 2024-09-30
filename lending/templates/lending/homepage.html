@@ -2,17 +2,57 @@
 
 {% block content %}
 
+<main class="container-fluid">
+
+  {% if user.is_authenticated %}
+
+    <div class="shadowbox text-bg-dark">
+
+      {% include 'lending/dashboard.html' %}
 
 
-{% if user.is_authenticated %}
+    </div>
 
-  <h1>Welcome {{ user.username }}</h1>
+
+    
 
 
   
 
 
-{% else %}
+  {% else %}
+
+
+  
+
+    <section class="container hero">
+      <div data-aos="fade-right">
+        {% include 'lending/hero.html' %}
+      </div>
+    </section>
+      <hr>
+      <div class="b-example-divider mb-0"></div>
+    <section id="features">
+      <div data-aos="fade-left">
+      
+        {% include 'lending/features.html' %}
+      </div>
+    </section>
+    <section>
+      <div data-aos="fade-down-right">
+        {% include 'lending/borrower_benefits.html' %}
+      </div>
+      <div data-aos="fade-up">
+        {% include 'lending/lender_benefits.html' %}
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    AOS.init();
+  </script>
+  
 
 
 

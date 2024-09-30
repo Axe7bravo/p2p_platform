@@ -49,6 +49,10 @@ def logout_view(request):
 def homepage(request):
     return render(request, 'lending/homepage.html')
 
+def offerings(request):
+    return render(request, 'lending/offerings.html')
+
+
 @login_required
 def create_loan(request):
     if request.method == 'POST':
@@ -142,3 +146,19 @@ def edit_profile(request):
     else:
         form = UserProfileForm(instance=profile)
     return render(request, 'lending/edit_profile.html', {'form': form})
+
+def borrower_dashboard(request):
+    user = request.user
+    loans = Loan.objects.filter(borrower=user)
+    payments = Payment.objects.filter(loan__borrower=user)
+
+    context = {
+        'loans': loans,
+        'payments': payments,
+    }
+
+    return render(request, 'lending/dashboard.html', context)
+
+def index(request):
+    return render(request, './index.html')
+
