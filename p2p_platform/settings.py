@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'lending.apps.LendingConfig',
 
+
     
     
 ]
@@ -127,3 +128,17 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Email backend
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+"""EMAIL_BACKEND = 'anymail.backends.smtp.EmailBackend'
+ANYMAIL = {
+    'SMTP': {
+        'HOST': 'smtp.your-email-provider.com',
+        'PORT': 587,  # Use 465 for SSL
+        'USERNAME': 'your_email@example.com',
+        'PASSWORD': 'your_email_password',
+        'USE_TLS': True,
+    },
+}"""

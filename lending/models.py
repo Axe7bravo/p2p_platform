@@ -39,5 +39,11 @@ class Payment(models.Model):
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     date = models.DateField()
     
+class BorrowerVerification(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    identity_document = models.FileField(upload_to='verification_documents/')
+    income_proof = models.FileField(upload_to='verification_documents/')
+    address_proof = models.FileField(upload_to='verification_documents/')
+    
     
   # Make bio optional

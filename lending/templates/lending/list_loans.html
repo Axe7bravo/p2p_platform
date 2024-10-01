@@ -1,10 +1,36 @@
+{% extends 'lending/base.html' %}
 
-
-{% include 'lending/profile.html' %}
 {% block content %}
-    <h1>List Loans</h1>
-    {% for loan in loans %}
-        <p>{{ loan.amount }} - {{ loan.interest_rate }}% - {{ loan.term_months }} months</p>
-        <a href="{% url 'invest_in_loan' loan.id %}">Invest</a>
-    {% endfor %}
-{% endblock %}
+
+<h1>Loan Details</h1>
+
+<p>Loan ID: {{ loan.id }}</p>
+<p>Amount: {{ loan.amount }}</p>
+<p>Interest Rate: {{ loan.interest_rate }}%</p>
+<p>Term (Months): {{ loan.term_months }}</p>
+<p>Outstanding Balance: {{ loan.outstanding_balance }}</p>
+<p>Status: {{ loan.get_status_display }}</p>
+
+<h2>Payment History</h2>
+{% if loan.payment_set.all %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Amount</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for payment in loan.payment_set.all %}
+        <tr>
+            <td>{{ payment.amount }}</td>
+            <td>{{ payment.date }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No payments have been made for this loan yet.</p>
+{% endif %}
+
+{% endblock content %}

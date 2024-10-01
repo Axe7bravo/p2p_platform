@@ -1,4 +1,3 @@
-from django.shortcuts import render
 
 # Create your views here.
 from django.shortcuts import render, redirect
@@ -7,8 +6,9 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import LoginForm, LoanForm, InvestmentForm, RegistrationForm, UserProfileForm
-from django.contrib.auth.forms import UserCreationForm
+
 from .models import Loan, Payment, UserProfile
+from django.core.mail import send_mail
 def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
@@ -164,3 +164,24 @@ def index(request):
 
 def about_view(request):
     return render(request, 'lending/about.html')
+
+
+def contact_view(request):
+    if request.method == 'POST': 
+
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+
+        # Send email
+        send_mail( 
+
+            'Contact Form Submission',
+            message,
+            email,
+            ['thato.dice@gmail.com'],  # Replace with your email address
+        )
+
+        return redirect('contact')  # Redirect back to the contact page
+
+    return render(request, 'lending/contact.html')
