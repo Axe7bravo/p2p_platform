@@ -2,11 +2,21 @@
 {% extends "lending/base.html" %}
 
 {% block content %}
-{% include 'lending/sidebar.html' %}
-<div class="d-flex align-items-start">
 
+<div class="col">
+    {% include 'lending/sidebar.html' %}      
 </div>
-<div class="d-flex align-items-end">
-      
-</div>
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-5">
+
+    <div class="container col-8 px-4 py-5">
+        <form method="POST" >
+            {% csrf_token %}
+
+            {{form.as_p}}
+            <button type="submit" class="btn btn-primary w-100 py-2">Submit</button>
+        </form>
+    </div>
+
+</main>
+
 {% endblock %}

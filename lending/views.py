@@ -6,8 +6,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import LoginForm, LoanForm, InvestmentForm, RegistrationForm, UserProfileForm
-
-from .models import Loan, Payment, UserProfile
+from .forms import VerificationForm
+from .models import Loan, Payment, UserProfile,BorrowerVerification
 from django.core.mail import send_mail
 def register(request):
     if request.method == 'POST':
@@ -185,3 +185,20 @@ def contact_view(request):
         return redirect('contact')  # Redirect back to the contact page
 
     return render(request, 'lending/contact.html')
+
+def verification_view(request):
+    if request.user.user_type == 'borrower':
+        if request.method == 'POST':
+            form = VerificationForm(request.POST, request.FILES)
+            if form.is_valid():
+                verification = BorrowerVerification(user=request.user, **form.cleaned_data)
+                verification.save()
+                return redirect('verification_submitted')
+        else:
+            form = VerificationForm()
+        return render(request, 'lending/borrower_verification.html', {'form': form})
+    else:
+        return redirect('home')  # Redirect to homepage if not a borrower
+
+def verification_submitted(request):
+    return render(request, 'lending/verification_submitted.html')

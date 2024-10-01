@@ -1,5 +1,5 @@
 from django import forms
-from .models import Loan, Investment, User, UserProfile
+from .models import Loan, Investment, User, UserProfile, BorrowerVerification
 from django.contrib.auth.forms import UserCreationForm
 
 
@@ -43,3 +43,8 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ('first_name', 'last_name', 'bio')
+        
+class VerificationForm(forms.ModelForm):
+    class Meta:
+        model = BorrowerVerification
+        fields = ('identity_document', 'income_proof', 'address_proof')

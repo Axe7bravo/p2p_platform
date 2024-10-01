@@ -1,36 +1,44 @@
 {% extends 'lending/base.html' %}
 
 {% block content %}
+<div class="row justify-content-start">
+    <div class="col-auto ">
+        {% include 'lending/sidebar.html' %}
+    </div>
+    <main class="col-4 ">
+        <div class="container-fluid">
+            <h1>Loan Details</h1>
 
-<h1>Loan Details</h1>
+            <p>Loan ID: {{ loan.id }}</p>
+            <p>Amount: {{ loan.amount }}</p>
+            <p>Interest Rate: {{ loan.interest_rate }}%</p>
+            <p>Term (Months): {{ loan.term_months }}</p>
+            <p>Outstanding Balance: {{ loan.outstanding_balance }}</p>
+            <p>Status: {{ loan.get_status_display }}</p>
 
-<p>Loan ID: {{ loan.id }}</p>
-<p>Amount: {{ loan.amount }}</p>
-<p>Interest Rate: {{ loan.interest_rate }}%</p>
-<p>Term (Months): {{ loan.term_months }}</p>
-<p>Outstanding Balance: {{ loan.outstanding_balance }}</p>
-<p>Status: {{ loan.get_status_display }}</p>
-
-<h2>Payment History</h2>
-{% if loan.payment_set.all %}
-<table class="table">
-    <thead>
-        <tr>
-            <th>Amount</th>
-            <th>Date</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for payment in loan.payment_set.all %}
-        <tr>
-            <td>{{ payment.amount }}</td>
-            <td>{{ payment.date }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-{% else %}
-<p>No payments have been made for this loan yet.</p>
-{% endif %}
+            <h2>Payment History</h2>
+            {% if loan.payment_set.all %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Amount</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for payment in loan.payment_set.all %}
+                    <tr>
+                        <td>{{ payment.amount }}</td>
+                        <td>{{ payment.date }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>No payments have been made for this loan yet.</p>
+            {% endif %}
+        </div>  
+        <main>
+</div>
 
 {% endblock content %}
