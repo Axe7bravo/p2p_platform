@@ -16,6 +16,7 @@ urlpatterns = [
     path('payments/', views.list_payments, name='payments'),
     path('offering/', views.offerings, name='offering'),
     path('about/', views.about_view, name='about'),
+    path('faqs/', views.faq_view, name='faqs'),
     path('contact/', views.contact_view, name='contact'),
     path('verification/', views.verification_view, name='borrower_verification'),
     path('verification-submitted/', views.verification_submitted, name='verification_submitted'),

@@ -165,6 +165,9 @@ def index(request):
 def about_view(request):
     return render(request, 'lending/about.html')
 
+def faq_view(request):
+    return render(request, 'lending/faq.html')
+
 
 def contact_view(request):
     if request.method == 'POST': 
