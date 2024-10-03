@@ -4,19 +4,19 @@
 {%block content%}
 <div class="container text-center">
 
- <div class="dropdown align-items-end">
-  <a href="{% url 'home' %}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-    <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-    <span class="fs-4"><h1>Dashboard</h1></span>
-  </a>
-  <ul class="dropdown-menu dropdown-menu-light text-small shadow">
-    <li><a class="dropdown-item" href="#">New loan</a></li>
-    <li><a class="dropdown-item" href="#">Settings</a></li>
-    <li><a class="dropdown-item" href="#">Profile</a></li>
-    <li><hr class="dropdown-divider"></li>
-    <li><a class="dropdown-item" href="{% url 'logout' %}">Sign out</a></li>
-  </ul>
-</div>
+  <div class="dropdown align-items-end">
+      <a href="{% url 'home' %}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+        <span class="fs-4"><h1>Dashboard</h1></span>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-light text-small shadow">
+        <li><a class="dropdown-item" href="#">New loan</a></li>
+        <li><a class="dropdown-item" href="#">Settings</a></li>
+        <li><a class="dropdown-item" href="#">Profile</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="{% url 'logout' %}">Sign out</a></li>
+      </ul>
+  </div>
 </div>
 <div class="album py-5 bg-body-tertiary">
   <div class="container">
@@ -30,7 +30,7 @@
           </svg>
           
           <div class="card-body text-center">
-            <p class="card-text">Loans Overview</p>
+            <p class="card-text"><strong>Loans Overview</strong></p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group align-items-center">
                 <button type="button" class="btn btn-sm text-white btn-secondary"><a href="{% url 'loans' %}" class=" px-2 text-white" style="text-decoration:none;">View</a></button>
@@ -49,7 +49,7 @@
           </svg>
           
           <div class="card-body text-center">
-            <p class="card-text">Total Repaid</p>
+            <p class="card-text"><strong>Total Repaid</strong></p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
                 <button type="button" class="btn btn-sm text-white btn-secondary"><a href="{% url 'payments' %}" class=" px-2 text-white" style="text-decoration:none;">View</a></button>
@@ -69,7 +69,7 @@
           </svg>
           
           <div class="card-body text-center">
-            <p class="card-text">Total Payments</p>
+            <p class="card-text"><strong>Total Payments</strong></p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
                 <button type="button" class="btn btn-sm text-white btn-secondary"><a href="{% url 'payments' %}" class=" px-2 text-white" style="text-decoration:none;">View</a></button>
@@ -88,7 +88,7 @@
           </svg>
           
           <div class="card-body text-center">
-            <p class="card-text">Payment History</p>
+            <p class="card-text"><strong>Payment History</strong></p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
                 <button type="button" class="btn btn-sm text-white btn-secondary"><a href="{% url 'loans' %}" class=" px-2 text-white" style="text-decoration:none;">View</a></button>
@@ -106,7 +106,7 @@
           </svg>
           
           <div class="card-body text-center">
-            <p class="card-text">Borrow Status</p>
+            <p class="card-text"><strong>Borrow Status</strong></p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
                 <button type="button" class="btn btn-sm text-white btn-secondary"><a href="{% url 'loans' %}" class=" px-2 text-white" style="text-decoration:none;">View</a></button>
@@ -125,7 +125,7 @@
           </svg>
           
           <div class="card-body text-center">
-            <p class="card-text">Analytics</p>
+            <p class="card-text"><strong>Analytics</strong></p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
                 <button type="button" class="btn btn-sm text-white btn-secondary"><a href="{% url 'loans' %}" class=" px-2 text-white" style="text-decoration:none;">View</a></button>

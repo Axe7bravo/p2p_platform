@@ -9,6 +9,7 @@ urlpatterns = [
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
     path('create-loan/',views.create_loan, name='create_loan'),
+    path('example/', views.test_view, name='example'),
     path('list-loans/', views.list_loans, name='list_loans'),
     path('invest/<int:loan_id>/', views.invest_in_loan, name='invest_in_loan'),
     path('profile/', views.user_profile, name='profile'),

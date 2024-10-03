@@ -165,6 +165,9 @@ def index(request):
 def about_view(request):
     return render(request, 'lending/about.html')
 
+def test_view(request):
+    return render  (request, 'lending/example.html')
+
 def faq_view(request):
     return render(request, 'lending/faq.html')
 
