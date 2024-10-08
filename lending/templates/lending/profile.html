@@ -2,25 +2,25 @@
 {% extends "lending/base.html" %}
 
 {% block content %}
+<main class="container-fluid">
+    <div class="container-fluid">
+        <div class="container">
+            {% include 'lending/sidebar.html' %}      
+        </div>
 
-<div class="row ">
-    <div class="col-4">
-        {% include 'lending/sidebar.html' %}      
+
+        
+
+        <div class="album py-5 bg-body-tertiary">
+            {% lorem 2 p %}
+            <form method="POST" >
+                {% csrf_token %}
+
+                {{form.as_p}}
+                <button type="submit" class="btn btn-primary w-100 py-2">Submit</button>
+            </form>
+        </div>
     </div>
-
-
-    
-
-    <div class="col-4">
-        {% lorem 2 p %}
-        <form method="POST" >
-            {% csrf_token %}
-
-            {{form.as_p}}
-            <button type="submit" class="btn btn-primary w-100 py-2">Submit</button>
-        </form>
-    </div>
-</div>
-
+</main>
 
 {% endblock %}

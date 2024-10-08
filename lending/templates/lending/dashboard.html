@@ -2,128 +2,115 @@
 
 {%extends 'lending/sidebar.html'%}
 {%block content%}
-<div class="container text-center">
+<div class="container-fluid">
 
-  <div class="dropdown align-items-end">
-      <a href="{% url 'home' %}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-        <img width="30" height="30" src="/static/lending/images/dashboard.svg" alt="overview"/>
-        <span class="fs-4"><h1>Dashboard</h1></span>
-      </a>
-      <ul class="dropdown-menu dropdown-menu-light text-small shadow">
-        <li><a class="dropdown-item" href="#">New loan</a></li>
-        <li><a class="dropdown-item" href="#">Settings</a></li>
-        <li><a class="dropdown-item" href="#">Profile</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="{% url 'logout' %}">Sign out</a></li>
-      </ul>
-  </div>
-</div>
-<div class="album py-5 bg-body-tertiary">
-  <div class="container">
+    <div class="album py-5 bg-body-tertiary">
+      <div class="container">
 
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-      <div class="col">
-        <div class="card shadow-sm zoom" style="width: 16rem;">
-          <br>
-          <img width="100%" height="100" src="/static/lending/images/overview.svg" alt="overview"/>
-          
-          <div class="card-body text-center">
-            <p class="card-text"><strong>Loans Overview</strong></p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group align-items-center">
-                <button type="button" class="btn btn-sm text-white btn-secondary"><a href="{% url 'loans' %}" class=" px-2 text-white" style="text-decoration:none;">View</a></button>
-                
-              </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          <div class="col">
+            <div class="card shadow-sm zoom" style="width: 16rem;">
+              <br>
+              <img width="100%" height="100" src="/static/lending/images/overview.svg" alt="overview"/>
               
+              <div class="card-body text-center">
+                <p class="card-text"><strong>Loans Overview</strong></p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group align-items-center">
+                    <button type="button" class="btn btn-sm text-white btn-secondary"><a href="{% url 'loans' %}" class=" px-2 text-white" style="text-decoration:none;">View</a></button>
+                    
+                  </div>
+                  
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card shadow-sm zoom" style="width: 16rem;">
-          <br>
-          <img width="100%" height="100" src="/static/lending/images/repay.svg" alt="repayment"/>
-          
-          <div class="card-body text-center">
-            <p class="card-text"><strong>Total Repaid</strong></p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm text-white btn-secondary"><a href="{% url 'payments' %}" class=" px-2 text-white" style="text-decoration:none;">View</a></button>
-                
-              </div>
+          <div class="col">
+            <div class="card shadow-sm zoom" style="width: 16rem;">
+              <br>
+              <img width="100%" height="100" src="/static/lending/images/repay.svg" alt="repayment"/>
               
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card shadow-sm zoom" style="width: 16rem;">
-          <br>
-          <img width="100%" height="100" src="/static/lending/images/payment.svg" alt="payment"/>
-          
-          <div class="card-body text-center">
-            <p class="card-text"><strong>Total Payments</strong></p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm text-white btn-secondary"><a href="{% url 'payments' %}" class=" px-2 text-white" style="text-decoration:none;">View</a></button>
-                
+              <div class="card-body text-center">
+                <p class="card-text"><strong>Total Repaid</strong></p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm text-white btn-secondary"><a href="{% url 'payments' %}" class=" px-2 text-white" style="text-decoration:none;">View</a></button>
+                    
+                  </div>
+                  
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
+          <div class="col">
+            <div class="card shadow-sm zoom" style="width: 16rem;">
+              <br>
+              <img width="100%" height="100" src="/static/lending/images/payment.svg" alt="payment"/>
+              
+              <div class="card-body text-center">
+                <p class="card-text"><strong>Total Payments</strong></p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm text-white btn-secondary"><a href="{% url 'payments' %}" class=" px-2 text-white" style="text-decoration:none;">View</a></button>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-      <div class="col">
-        <div class="card shadow-sm zoom" style="width: 16rem;">
-          <br>
-          <img width="100%" height="100" src="/static/lending/images/history.svg" alt="payment history"/>
-          
-          <div class="card-body text-center">
-            <p class="card-text"><strong>Payment History</strong></p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm text-white btn-secondary"><a href="{% url 'loans' %}" class=" px-2 text-white" style="text-decoration:none;">View</a></button>
-              </div>
+          <div class="col">
+            <div class="card shadow-sm zoom" style="width: 16rem;">
+              <br>
+              <img width="100%" height="100" src="/static/lending/images/history.svg" alt="payment history"/>
               
+              <div class="card-body text-center">
+                <p class="card-text"><strong>Payment History</strong></p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm text-white btn-secondary"><a href="{% url 'loans' %}" class=" px-2 text-white" style="text-decoration:none;">View</a></button>
+                  </div>
+                  
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card shadow-sm zoom"style="width: 16rem;">
-          <br>
-          <img width="100%" height="100" src="/static/lending/images/status.svg" alt="status"/>
-          
-          <div class="card-body text-center">
-            <p class="card-text"><strong>Borrow Status</strong></p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm text-white btn-secondary"><a href="{% url 'loans' %}" class=" px-2 text-white" style="text-decoration:none;">View</a></button>
+          <div class="col">
+            <div class="card shadow-sm zoom"style="width: 16rem;">
+              <br>
+              <img width="100%" height="100" src="/static/lending/images/status.svg" alt="status"/>
+              
+              <div class="card-body text-center">
+                <p class="card-text"><strong>Borrow Status</strong></p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm text-white btn-secondary"><a href="{% url 'loans' %}" class=" px-2 text-white" style="text-decoration:none;">View</a></button>
 
+                  </div>
+                  
+                </div>
               </div>
-              
             </div>
           </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card shadow-sm zoom"style="width: 16rem;">
-          <br>
-          <img width="100%" height="100" src="/static/lending/images/analytics.svg" alt="status"/>
-          
-          <div class="card-body text-center">
-            <p class="card-text"><strong>Analytics</strong></p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm text-white btn-secondary"><a href="{% url 'loans' %}" class=" px-2 text-white" style="text-decoration:none;">View</a></button>
-              </div>
+          <div class="col">
+            <div class="card shadow-sm zoom"style="width: 16rem;">
+              <br>
+              <img width="100%" height="100" src="/static/lending/images/analytics.svg" alt="status"/>
               
+              <div class="card-body text-center">
+                <p class="card-text"><strong>Analytics</strong></p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm text-white btn-secondary"><a href="{% url 'loans' %}" class=" px-2 text-white" style="text-decoration:none;">View</a></button>
+                  </div>
+                  
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
 
+        </div>
+      </div>
     </div>
-  </div>
 </div>
 {%endblock%}

@@ -20,6 +20,7 @@ from p2p_platform.views import index
 
 
 urlpatterns = [
+    path("chat/", include("chat.urls")),
     path('lending/', include('lending.urls')),
     path('admin/', admin.site.urls),
     path('',index, name='index'),

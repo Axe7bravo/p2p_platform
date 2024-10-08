@@ -1,45 +1,93 @@
 
-    <div class="container-fluid">
-        <div class="row ">
-            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-body-tertiary text-white sidebar collapse ">
-                <div class="position-sticky pt-3">
-                    <a href="{% url 'home' %}" class="d-flex align-items-center text-black text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img width="32" height="32" src="/static/lending/images/profile.svg" alt="default_profile_pic" class="rounded-circle me-2"/>
-                        
-                        <strong>{{user.username}}</strong>
-                    </a>
+<!-- proper Dashboard-->
+    <div class="row">
+        <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
+          <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="sidebarMenuLabel">Company name</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu" aria-label="Close"></button>
+            </div>
+            <div  >
+                <a href="{% url 'home' %}" class="d-flex align-items-center text-black text-decoration-none" aria-expanded="false">
+                    <img width="32" height="32" src="/static/lending/images/profile.svg" alt="default_profile_pic" class="rounded-circle me-2"/>
                     
-                    <hr>
-                    <ul class="nav nav-underline flex-column mb-auto">
-                        <li class=" nav-item btn btn-outline-secondary">
-                        
-                            <a class=" px-2 text-dark" aria-current="page" href="{% url 'home' %}" style="text-decoration:none" >Dashboard</a>
-                            
-                        </li>
-                        
-                        <li class="nav-item btn btn-outline-secondary ">
-                            <a class=" px-2 text-dark" href="{% url 'loans' %}" style="text-decoration:none" >Loans</a>
-                        </li>
-                    
-                        <li class="nav-item btn btn-outline-secondary">
-                            <a class=" px-2 text-dark " href="{% url 'payments' %}" style="text-decoration:none" >Payments</a>
-                        </li>
-                        
-                        <li class="nav-item btn btn-outline-secondary">
-                            <a class="px-2 text-dark" href="{% url 'profile' %}" style="text-decoration:none" >Profile</a>
-                        </li>
-                
-                        <li class="nav-item btn btn-outline-secondary">
-                            <a class=" px-2 text-dark" href="{% url 'borrower_verification' %}"style="text-decoration:none">KYC</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+                    <strong>{{user.username}}</strong>
+                </a>
 
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                {% block content %}
-                {% endblock content %}
-            </main>
+            </div>
+            
+            <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
+              <ul class="nav flex-column mb-auto">
+                <li class=" nav-item btn btn-outline-secondary">
+                        
+                    <a class=" px-2 text-dark" aria-current="page" href="{% url 'home' %}" style="text-decoration:none" >Dashboard</a>
+                    
+                </li>
+                <br>
+
+
+                <li class="nav-item btn btn-outline-secondary ">
+                            <a class=" px-2 text-dark" href="{% url 'loans' %}" style="text-decoration:none" >Loans</a>
+                </li>
+                <br>
+
+                <li class="nav-item btn btn-outline-secondary">
+                    <a class=" px-2 text-dark " href="{% url 'payments' %}" style="text-decoration:none" >Payments</a>
+                </li>
+                <br>
+                
+                <li class="nav-item btn btn-outline-secondary">
+                    <a class=" px-2 text-dark " href="{% url 'profile' %}" style="text-decoration:none" >Profile</a>
+                </li>
+                <br>
+                
+                <li class="nav-item btn btn-outline-secondary">
+                    <a class=" px-2 text-dark gap-2 " href="{% url 'borrower_verification' %}" style="text-decoration:none" >KYC</a>
+                </li>
+                <br>
+                
+                <li class="nav-item btn btn-outline-secondary">
+                    <a class=" px-2 text-dark gap-2  " href="{% url 'chat' %}" style="text-decoration:none" >Chat</a>
+                </li>
+                
+              </ul>
+    
+            
+    
+              <hr class="my-3">
+    
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link d-flex align-items-center gap-2" href="#">
+                    <svg class="bi"><use xlink:href="#gear-wide-connected"/></svg>
+                    Settings
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link d-flex align-items-center gap-2" href="{% url 'logout' %}">
+                    <svg class="bi"><use xlink:href="#door-closed"/></svg>
+                    Sign out
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-    </div>
+    
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <div class="d-flex flex-wrap justify-content-center flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <img width="30" height="30" src="/static/lending/images/dashboard.svg" alt="overview"/>
+            <br>
+            <h1 class="h2">Dashboard</h1>
+           
+          </div>
+
+        <!-- contents of page-->
+
+          {% block content %}
+          {% endblock content %}
+         
+        </main>
+      </div>
+    
 

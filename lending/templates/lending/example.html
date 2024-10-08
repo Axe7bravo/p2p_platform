@@ -2,72 +2,10 @@
 
 {%extends 'lending/base.html'%}
 {%block content%}
-<div class="container text-center">
 
- <div class="dropdown align-items-end">
-    
-    <a href="{% url 'home' %}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-      <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-      <span class="fs-4"><h1>Dashboard</h1></span>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-light text-small shadow">
-      <li><a class="dropdown-item" href="#">New loan</a></li>
-      <li><a class="dropdown-item" href="#">Settings</a></li>
-      <li><a class="dropdown-item" href="#">Profile</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="{% url 'logout' %}">Sign out</a></li>
-    </ul>
- </div>
+<div class="container-fluid">
+  
 </div>
-<div class="album py-5 bg-body-tertiary">
-  <div class="container">
-    {% url 'home' as testing %}
-
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        {% if testing %}
-            <div class="col">
-                {%include 'lending/sidebar.html'%}
-                {{testing}}
-            </div>
-        {%else%}
-            <div class="col">
-                <h1>Loan Details</h1>
-
-                <p>Loan ID: {{ loan.id }}</p>
-                <p>Amount: {{ loan.amount }}</p>
-                <p>Interest Rate: {{ loan.interest_rate }}%</p>
-                <p>Term (Months): {{ loan.term_months }}</p>
-                <p>Outstanding Balance: {{ loan.outstanding_balance }}</p>
-                <p>Status: {{ loan.get_status_display }}</p>
-
-                <h2>Payment History</h2>
-                {% if loan.payment_set.all %}
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Amount</th>
-                            <th>Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for payment in loan.payment_set.all %}
-                        <tr>
-                            <td>{{ payment.amount }}</td>
-                            <td>{{ payment.date }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-                {% else %}
-                <p>No payments have been made for this loan yet.</p>
-                {% endif %}
-            </div>
-      {%endif%}
-     
 
 
-
-    </div>
-  </div>
-</div>
 {%endblock%}

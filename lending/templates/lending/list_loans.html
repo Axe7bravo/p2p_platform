@@ -1,12 +1,11 @@
 {% extends 'lending/base.html' %}
-
+    
 {% block content %}
-<div class="row justify-content-start">
-    <div class="col-auto ">
-        {% include 'lending/sidebar.html' %}
-    </div>
-    <main class="col-4 ">
-        <div class="container-fluid">
+
+    
+       <div class="align-items-center">
+    
+        
             <h1>Loan Details</h1>
 
             <p>Loan ID: {{ loan.id }}</p>
@@ -37,8 +36,10 @@
             {% else %}
             <p>No payments have been made for this loan yet.</p>
             {% endif %}
-        </div>  
-        <main>
-</div>
+
+        </div>
+      
+
+
 
 {% endblock content %}
