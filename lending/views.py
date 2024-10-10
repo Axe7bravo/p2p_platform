@@ -1,13 +1,12 @@
 
 # Create your views here.
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages 
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import LoginForm, LoanForm, InvestmentForm, RegistrationForm, UserProfileForm
-from .forms import VerificationForm
-from .models import Loan, Payment, UserProfile,BorrowerVerification
+from .forms import LoginForm, LoanForm, InvestmentForm, RegistrationForm, UserProfileForm, VerificationForm, LoanApplicationForm
+from .models import Loan, Payment, UserProfile,BorrowerVerification, LoanApplication
 from django.core.mail import send_mail
 def register(request):
     if request.method == 'POST':
@@ -132,21 +131,29 @@ def update_loan_status(loan):
     
 def user_profile(request):
     user = request.user
-    profile = user.profile
+    profile = user.userprofile
     return render(request, 'lending/profile.html', {'user': user, 'profile': profile})
 
 def edit_profile(request):
     user = request.user
-    profile = user.profile
+    
+    try:
+        profile = user.userprofile  # Assuming a OneToOneField
+    
+    except UserProfile.DoesNotExist:
+        profile = UserProfile.objects.create(user=user)
+        
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=profile)
+        
         if form.is_valid():
+            form.cleaned_data['user'] = user  # Add the user field to form data
             form.save()
-            return redirect('user_profile')
+            return redirect('profile')
     else:
         form = UserProfileForm(instance=profile)
-    return render(request, 'lending/edit_profile.html', {'form': form})
 
+    return render(request, 'lending/edit_profile.html', {'form': form})
 def borrower_dashboard(request):
     user = request.user
     loans = Loan.objects.filter(borrower=user)
@@ -193,10 +200,13 @@ def contact_view(request):
     return render(request, 'lending/contact.html')
 
 def verification_view(request):
+    
     if request.user.user_type == 'borrower':
         if request.method == 'POST':
             form = VerificationForm(request.POST, request.FILES)
             if form.is_valid():
+                verification = form.save(commit=False)
+                #verification.user = request.user
                 verification = BorrowerVerification(user=request.user, **form.cleaned_data)
                 verification.save()
                 return redirect('verification_submitted')
@@ -208,3 +218,44 @@ def verification_view(request):
 
 def verification_submitted(request):
     return render(request, 'lending/verification_submitted.html')
+
+def loan_application(request):
+    if request.method == 'POST':
+        form = LoanApplicationForm(request.POST)
+        if form.is_valid():
+            application = form.save(commit=False)
+            application.borrower = request.user
+            application.save()
+            return redirect('application_submitted')
+    else:
+        form = LoanApplicationForm()
+    return render(request, 'lending/loan_application.html', {'form': form})
+
+def application_submitted(request):
+    return render(request, 'lending/application_submitted.html')
+
+def loan_application_details(request, application_id):
+    application = get_object_or_404(LoanApplication, id=application_id)
+    return render(request, 'lending/loan_application_details.html', {'application': application})
+
+def edit_loan_application(request, application_id):
+    application = get_object_or_404(LoanApplication, id=application_id)
+
+    if request.method == 'POST':
+        form = LoanApplicationForm(request.POST, instance=application)
+        if form.is_valid():
+            form.save()
+            return redirect('loan_applications')
+    else:
+        form = LoanApplicationForm(instance=application)
+
+    return render(request, 'lending/edit_loan_application.html', {'form': form, 'application': application})
+
+def delete_loan_application(request, application_id):
+    application = get_object_or_404(LoanApplication, id=application_id)
+    application.delete()
+    return redirect('loan_applications')
+
+def list_loan_applications(request):
+    applications = LoanApplication.objects.filter(borrower=request.user)
+    return render(request, 'lending/loan_applications.html', {'applications': applications})

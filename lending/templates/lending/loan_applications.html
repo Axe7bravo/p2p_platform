@@ -1,0 +1,33 @@
+{% extends "lending/base.html" %}
+
+{% block content %}
+<h1>My Loan Applications</h1>
+
+{% if applications %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Amount</th>
+                <th>Purpose</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for application in applications %}
+                <tr>
+                    <td>{{ application.id }}</td>
+                    <td>{{ application.amount_requested }}</td>
+                    <td>{{ application.purpose }}</td>
+                    <td>
+                        <a href="{% url 'application_details' application.id %}" class="btn btn-primary">View Details</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>You have no active loan applications.</p>
+{% endif %}
+
+{% endblock content %}

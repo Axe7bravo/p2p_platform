@@ -3,7 +3,8 @@
 {%extends 'lending/sidebar.html'%}
 {%block content%}
 <div class="container-fluid">
-
+  
+  
     <div class="album py-5 bg-body-tertiary">
       <div class="container">
 
@@ -15,7 +16,7 @@
               
               <div class="card-body text-center">
                 <p class="card-text"><strong>Loans Overview</strong></p>
-                <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-center">
                   <div class="btn-group align-items-center">
                     <button type="button" class="btn btn-sm text-white btn-secondary"><a href="{% url 'loans' %}" class=" px-2 text-white" style="text-decoration:none;">View</a></button>
                     
@@ -32,7 +33,7 @@
               
               <div class="card-body text-center">
                 <p class="card-text"><strong>Total Repaid</strong></p>
-                <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-center">
                   <div class="btn-group">
                     <button type="button" class="btn btn-sm text-white btn-secondary"><a href="{% url 'payments' %}" class=" px-2 text-white" style="text-decoration:none;">View</a></button>
                     
@@ -49,7 +50,7 @@
               
               <div class="card-body text-center">
                 <p class="card-text"><strong>Total Payments</strong></p>
-                <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-center">
                   <div class="btn-group">
                     <button type="button" class="btn btn-sm text-white btn-secondary"><a href="{% url 'payments' %}" class=" px-2 text-white" style="text-decoration:none;">View</a></button>
                     
@@ -66,7 +67,7 @@
               
               <div class="card-body text-center">
                 <p class="card-text"><strong>Payment History</strong></p>
-                <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-center">
                   <div class="btn-group">
                     <button type="button" class="btn btn-sm text-white btn-secondary"><a href="{% url 'loans' %}" class=" px-2 text-white" style="text-decoration:none;">View</a></button>
                   </div>
@@ -82,7 +83,7 @@
               
               <div class="card-body text-center">
                 <p class="card-text"><strong>Borrow Status</strong></p>
-                <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-center">
                   <div class="btn-group">
                     <button type="button" class="btn btn-sm text-white btn-secondary"><a href="{% url 'loans' %}" class=" px-2 text-white" style="text-decoration:none;">View</a></button>
 
@@ -99,7 +100,7 @@
               
               <div class="card-body text-center">
                 <p class="card-text"><strong>Analytics</strong></p>
-                <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-center">
                   <div class="btn-group">
                     <button type="button" class="btn btn-sm text-white btn-secondary"><a href="{% url 'loans' %}" class=" px-2 text-white" style="text-decoration:none;">View</a></button>
                   </div>
@@ -112,5 +113,13 @@
         </div>
       </div>
     </div>
+  
+    
+    
+ 
+    
+    
+
+
 </div>
 {%endblock%}

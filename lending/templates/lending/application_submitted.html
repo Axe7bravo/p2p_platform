@@ -1,16 +1,18 @@
-{%extends 'lending/sidebar.html'%}
-{%block content%}
+{% extends "lending/base.html" %}
+
+{% block content %}
+
 <div class="container my-5">
     <div class="position-relative p-5 text-center text-muted bg-body border border-dashed rounded-5">
      
       <img width="50%" height="50" src="/static/lending/images/checkcircle.svg" alt="overview"/>
-      <h1 class="text-body-emphasis">Your Documents Have Been Submitted</h1>
+      <h1 class="text-body-emphasis">Your Loan Application Has Been Submitted</h1>
       <p class="col-lg-6 mx-auto mb-4">
-        Your verification documents have been successfully submitted. Peer2Peers will review your submitted documents and notify you about your status.
+        Your loan application has been successfully submitted. We will review your application and notify you of the decision.
       </p>
       <button class="btn btn-primary px-5 mb-5" type="button">
         <a href="{% url 'home' %}" class=" px-2 text-white" style="text-decoration:none;">Dashboard</a>
       </button>
     </div>
 </div>
-{%endblock%}
+{% endblock content %}
