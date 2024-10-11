@@ -1,17 +1,18 @@
 {% extends "lending/base.html" %}
 
 {% block content %}
-<h1>My Profile</h1>
+<div class= "justify-content-center">
+    <h1>My Profile</h1>
 
-<p><strong>Username:</strong> {{ user.username }}</p>
-<p><strong>Email:</strong> {{ user.email }}</p>
-<p><strong>First Name:</strong> {{ profile.first_name }}</p>
-<p><strong>Last Name:</strong> {{ profile.last_name }}</p>
-<p><strong>Date of Birth:</strong> {{ profile.date_of_birth }}</p>
-<p><strong>Address:</strong> {{ profile.address }}</p>
+    <p><strong>Username:</strong> {{ user.username }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>First Name:</strong> {{ profile.first_name }}</p>
+    <p><strong>Last Name:</strong> {{ profile.last_name }}</p>
+    <p><strong>Date of Birth:</strong> {{ profile.date_of_birth }}</p>
+    <p><strong>Address:</strong> {{ profile.address }}</p>
 
-<a href="{% url 'edit_profile' %}" class="btn btn-primary">Edit Profile</a>
-
+    <a href="{% url 'edit_profile' %}" class="btn btn-primary">Edit Profile</a>
+<div>
 
 
 

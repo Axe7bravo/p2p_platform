@@ -53,9 +53,16 @@ class UserProfileForm(forms.ModelForm):
 
         
 class VerificationForm(forms.ModelForm):
+    
+    identity_document = forms.FileField(widget=forms.FileInput(attrs={'class':'form-control'}))
+    income_proof = forms.FileField(widget=forms.FileInput(attrs={'class':'form-control'}))
+    address_proof = forms.FileField(widget=forms.FileInput(attrs={'class':'form-control'}))
     class Meta:
         model = BorrowerVerification
         fields = ('identity_document', 'income_proof', 'address_proof')
+        widgets = {
+            
+        }
         
 class LoanApplicationForm(forms.ModelForm):
     class Meta:
