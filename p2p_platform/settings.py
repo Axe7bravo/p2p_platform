@@ -29,10 +29,13 @@ ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'lending.User'
 
+
+
 # Application definition
 
 INSTALLED_APPS = [
-
+    'daphne',
+    'chat',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,9 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'lending.apps.LendingConfig',
-
-
-    
     
 ]
 
@@ -75,10 +75,21 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'p2p_platform.wsgi.application'
+ASGI_APPLICATION = 'p2p_platform.asgi.application'
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer",  # Replace with your preferred channel layer backend
+        "CONFIG": {
+        },
+    },
+}
 
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+
+DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 
 DATABASES = {
     'default': {
@@ -128,6 +139,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
 
 # Email backend
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"

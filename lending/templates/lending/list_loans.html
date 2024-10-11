@@ -1,44 +1,81 @@
 {% extends 'lending/base.html' %}
-
+    
 {% block content %}
-<div class="row justify-content-start">
-    <div class="col-auto ">
-        {% include 'lending/sidebar.html' %}
-    </div>
-    <main class="col-4 ">
-        <div class="container-fluid">
-            <h1>Loan Details</h1>
 
-            <p>Loan ID: {{ loan.id }}</p>
-            <p>Amount: {{ loan.amount }}</p>
-            <p>Interest Rate: {{ loan.interest_rate }}%</p>
-            <p>Term (Months): {{ loan.term_months }}</p>
-            <p>Outstanding Balance: {{ loan.outstanding_balance }}</p>
-            <p>Status: {{ loan.get_status_display }}</p>
+    <h1>Loan Details</h1>
 
-            <h2>Payment History</h2>
-            {% if loan.payment_set.all %}
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Amount</th>
-                        <th>Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for payment in loan.payment_set.all %}
-                    <tr>
-                        <td>{{ payment.amount }}</td>
-                        <td>{{ payment.date }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            {% else %}
-            <p>No payments have been made for this loan yet.</p>
-            {% endif %}
-        </div>  
-        <main>
-</div>
+        <div class="album py-4 bg-body-tertiary">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+                    <div class="col">
+                        <div class="card shadow-sm zoom" style="width: 16rem;">
+                            <br>
+                        <div class="text-center">
+                        <img width="40%" height="100"  src="/static/lending/images/applyform.png" alt="application icon"/>
+                        </div>
+                        <div class="card-body text-center">
+                            <p class="card-text"><strong>Apply</strong></p>
+                            <div class="d-flex justify-content-center ">
+                                <div class="btn-group align-items-center">
+                                    <button type="button" class="btn btn-sm text-white btn-secondary"><a href="{% url 'loan_application' %}" class=" px-2 text-white" style="text-decoration:none;">View</a></button>
+                                    
+                                </div>
+                            
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card shadow-sm zoom" style="width: 16rem;">
+                        <br>
+                        <div class="text-center">
+                        <img width="40%" height="100" src="/static/lending/images/apphistory.png" alt="overview"/>
+                        </div>
+                        <div class="card-body text-center">
+                            <p class="card-text"><strong>Applications History</strong></p>
+                            <div class="d-flex justify-content-center ">
+                            <div class="btn-group align-items-center">
+                                <button type="button" class="btn btn-sm text-white btn-secondary"><a href="{% url 'loan_applications' %}" class=" px-2 text-white" style="text-decoration:none;">View</a></button>
+                                
+                            </div>
+                            
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card shadow-sm zoom" style="width: 16rem;">
+                        <br>
+                        <div class="text-center">
+                        <img width="40%" height="100" src="/static/lending/images/messaging.png" alt="overview"/>
+                        </div>
+                        <div class="card-body text-center">
+                            <p class="card-text"><strong>Messages</strong></p>
+                            <div class="d-flex justify-content-center">
+                            <div class="btn-group text-center ">
+                                <button type="button" class="btn btn-sm text-center text-white btn-secondary"><a href="{% url 'loans' %}" class=" px-2 text-white" style="text-decoration:none;">View</a></button>
+                                
+                            </div>
+                            
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    <hr>
+       <div class="align-items-center">
+    
+        
+            
+
+        </div>
+      
+
+
 
 {% endblock content %}

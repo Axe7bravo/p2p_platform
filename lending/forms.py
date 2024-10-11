@@ -1,5 +1,6 @@
+from datetime import date
 from django import forms
-from .models import Loan, Investment, User, UserProfile, BorrowerVerification
+from .models import Loan, Investment, User, UserProfile, BorrowerVerification, LoanApplication
 from django.contrib.auth.forms import UserCreationForm
 
 
@@ -36,15 +37,34 @@ class RegistrationForm(UserCreationForm):
         
         
 class UserProfileForm(forms.ModelForm):
+    
     first_name = forms.CharField(max_length=30, widget=forms.TextInput(attrs={'class':'form-control'}))
     last_name = forms.CharField(max_length=30, widget=forms.TextInput(attrs={'class':'form-control'}))
     bio = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control'}))
+    date_of_birth = forms.DateField()
+    address = forms.CharField(max_length=100)
+    
     
     class Meta:
         model = UserProfile
-        fields = ('first_name', 'last_name', 'bio')
+        fields = ('first_name', 'last_name', 'bio', 'date_of_birth','address')
+        
+        
+
         
 class VerificationForm(forms.ModelForm):
+    
+    identity_document = forms.FileField(widget=forms.FileInput(attrs={'class':'form-control'}))
+    income_proof = forms.FileField(widget=forms.FileInput(attrs={'class':'form-control'}))
+    address_proof = forms.FileField(widget=forms.FileInput(attrs={'class':'form-control'}))
     class Meta:
         model = BorrowerVerification
         fields = ('identity_document', 'income_proof', 'address_proof')
+        widgets = {
+            
+        }
+        
+class LoanApplicationForm(forms.ModelForm):
+    class Meta:
+        model = LoanApplication
+        fields = ('amount_requested', 'purpose', 'term_months', 'income', 'status', 'payment_frequency')

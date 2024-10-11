@@ -1,0 +1,19 @@
+{% extends "lending/base.html" %}
+
+{% block content %}
+<h1>Loan Application Details</h1>
+
+<p><strong>Borrower:</strong> {{ application.borrower.username }}</p>
+<p><strong>Amount:</strong> {{ application.amount_requested }}</p>
+<p><strong>Purpose:</strong> {{ application.purpose }}</p>
+<p><strong>Term (Months):</strong> {{ application.term_months }}</p>
+<p><strong>Interest Rate:</strong> {{ application.interest_rate }}%</p>
+<p><strong>Status:</strong> {{ application.get_status_display }}</p>
+
+
+{% if application.status == 'pending' %}
+    <a href="{% url 'edit_loan_application' application.id %}" class="btn btn-primary">Edit</a>
+    <a href="{% url 'delete_loan_application' application.id %}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this loan application?');">Delete</a>
+{% endif %}
+
+{% endblock content %}
