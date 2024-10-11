@@ -1,4 +1,4 @@
-# Lending Platform
+# A Lending Platform
 
 A lending platform for connecting borrowers and lenders.
 
@@ -6,17 +6,17 @@ A lending platform for connecting borrowers and lenders.
 
 * User registration and login
 * Loan application and approval process
-* Payment processing
+* Community Chat
 * Borrower and lender profiles
 
 ## Installation
 
 1. Clone the repository:
-   ```
-   git clone [(https://github.com/Axe7bravo/p2p_platform)]
+    ```
+    git clone https://github.com/Axe7bravo/p2p_platform.git
 
 ## Create a virtual environment:
-    ```
+    ```Bash
     python -m venv venv
     source venv/bin/activate  # On Windows: venv\Scripts\activate
 ## Install dependencies
@@ -32,3 +32,4 @@ A lending platform for connecting borrowers and lenders.
   1. Register as a borrower or lender.
   2. Apply for a loan or browse available loans.
   3. Manage your loan applications or issued loans.
+  4. Chat to other users
